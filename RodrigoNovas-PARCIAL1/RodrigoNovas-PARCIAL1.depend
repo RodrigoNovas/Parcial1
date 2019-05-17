@@ -1,0 +1,35 @@
+# depslib dependency file v1.0
+1558043785 source:c:\users\rnovas002\3d objects\rodrigonovas-parcial1\funcionesget.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	<time.h>
+	"funcionesGet.h"
+
+1558043785 c:\users\rnovas002\3d objects\rodrigonovas-parcial1\funcionesget.h
+
+1558051566 source:c:\users\rnovas002\3d objects\rodrigonovas-parcial1\instrumento.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	<time.h>
+	"instrumento.h"
+	"funcionesGet.h"
+
+1558048217 c:\users\rnovas002\3d objects\rodrigonovas-parcial1\instrumento.h
+
+1558051391 source:c:\users\rnovas002\3d objects\rodrigonovas-parcial1\orquesta.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	<time.h>
+	"funcionesGet.h"
+	"orquesta.h"
+
+1558051715 source:c:\users\rnovas002\3d objects\rodrigonovas-parcial1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"instrumento.h"
+
+1558050104 c:\users\rnovas002\3d objects\rodrigonovas-parcial1\orquesta.h
+
