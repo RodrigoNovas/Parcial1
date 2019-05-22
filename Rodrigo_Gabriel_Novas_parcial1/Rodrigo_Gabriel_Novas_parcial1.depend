@@ -1,0 +1,51 @@
+# depslib dependency file v1.0
+1558567425 source:c:\users\rnovas002\3d objects\rodrigo_gabriel_novas_parcial1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"instrumento.h"
+	"orquesta.h"
+
+1558567430 c:\users\rnovas002\3d objects\rodrigo_gabriel_novas_parcial1\instrumento.h
+
+1558567510 c:\users\rnovas002\3d objects\rodrigo_gabriel_novas_parcial1\orquesta.h
+	"musico.h"
+
+1558567611 c:\users\rnovas002\3d objects\rodrigo_gabriel_novas_parcial1\musico.h
+
+1558567821 source:c:\users\rnovas002\3d objects\rodrigo_gabriel_novas_parcial1\funcionesget.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	<time.h>
+	"funcionesGet.h"
+
+1558567821 c:\users\rnovas002\3d objects\rodrigo_gabriel_novas_parcial1\funcionesget.h
+
+1558567428 source:c:\users\rnovas002\3d objects\rodrigo_gabriel_novas_parcial1\instrumento.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	<time.h>
+	"instrumento.h"
+	"funcionesGet.h"
+	"musico.h"
+
+1558567480 source:c:\users\rnovas002\3d objects\rodrigo_gabriel_novas_parcial1\orquesta.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	<time.h>
+	"funcionesGet.h"
+	"orquesta.h"
+	"musico.h"
+
+1558568482 source:c:\users\rnovas002\3d objects\rodrigo_gabriel_novas_parcial1\musico.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	<time.h>
+	"musico.h"
+	"orquesta.h"
+	"instrumento.h"
+	"funcionesGet.h"
+
