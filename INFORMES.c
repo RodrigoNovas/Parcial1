@@ -186,7 +186,7 @@ int inf_orquestaMayor5(eOrquesta* Orquestas, eMusico* Musicos, int cantOrquestas
                         contadorOrquestas++;
                     }
                 }
-                if(contadorOrquestas>1)
+                if(contadorOrquestas>5)
                 {   printf("ID:%d \tLUGAR:%s \tNOMBRE:%s ", Orquestas[i].idOrquestas, Orquestas[i].lugar, Orquestas[i].nombre);
 
                     switch(Orquestas[i].tipo)
