@@ -5,6 +5,8 @@
 #include "funcionesGet.h"
 #include "orquesta.h"
 #include "musico.h"
+#include "instrumento.h"
+#include "INFORMES.h"
 static int idAutoincrementable= 0;
 
 
@@ -242,7 +244,7 @@ void orquesta_listar(eOrquesta* orquestas,int cantidad)
 void orquesta_admin(eOrquesta* orquestas, eMusico* musicos,int cantidad, int cantidadMusicos)
 {
     int opcion,idAux;
-    char auxLugar[30];
+
     do
     {
         system("cls");
@@ -284,8 +286,7 @@ void orquesta_admin(eOrquesta* orquestas, eMusico* musicos,int cantidad, int can
 
         case 4:
             system("cls");
-            printf("\nSE LISTARA ORDENADO ALFABETICAMENTE POR NOMBRE DE LA ORQUESTA\n");
-            printf("ID\tNOMBRE\tTIPO\n\n");
+            printf("ID\tNOMBRE\tTIPO\tLUGAR\n\n");
             //orquesta_ordenar(orquestas,cantidad);
             orquesta_listar(orquestas,cantidad);
             //---------------------------------------------------------------------------------
@@ -325,26 +326,14 @@ void orquesta_ordenar(eOrquesta* orquestas,int cantidad)
 }
 
 
-//---------------------------------------------------------------------------------
 
-void orquesta_listar_Lugar(eOrquesta* orquestas,int cantidad, char lugar[])
-{
-    int i;
 
-    for(i=0;i<cantidad;i++)
-    {
-        if(orquestas[i].isEmpty== ESTADO_OCUPADO)
-        {
-            if (strcmp(orquestas[i].lugar, lugar)==0)
-            {
-                printf("%d\t%s\t%d\t%s\n",orquestas[i].idOrquestas,orquestas[i].nombre,orquestas[i].tipo,orquestas[i].lugar);
-            }
-            else{
-                printf("\nNo se encuentra lugar");
-            }
-        }
-    }
-}
+//------------------------------------------------------------------------------------------------------
+
+
+
+
+//---------------------------------------
 
 
 

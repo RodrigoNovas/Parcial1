@@ -6,6 +6,8 @@
 #include "orquesta.h"
 #include "instrumento.h"
 #include "funcionesGet.h"
+#include "INFORMES.h"
+
 
 static int idAutoincrementable= 0;
 
@@ -31,14 +33,15 @@ int musico_array_generarProximoId(void)
 int musico_init(eMusico* musicos ,int cantidad)
 {
     int i, retorno=-1;
-
+if(musicos!=NULL && cantidad >=0)
+    {
 
     for(i=0; i<cantidad; i++)
     {
         musicos[i].isEmpty= ESTADO_LIBRE;
     }
     retorno=0;
-
+    }
     return retorno;
 }
 
@@ -143,7 +146,6 @@ int musico_remove(eMusico* musicos,int cantidad,int id)
              {
                  musicos[i].isEmpty=ESTADO_LIBRE;
                  retorno=0;
-                 break;
              }
          }
      return retorno;
@@ -194,11 +196,11 @@ int musico_add(eMusico* musicos,eInstrumento* instrumentos, eOrquesta* orquestas
 void musico_hardcodearDatos(eMusico* musicos , int cantidad)
 {
     int i;
-    char nombre[][50]= {"Mus1","Mus2","Mus3","Mus4","Mus5","Mus5"};
+    char nombre[][50]= {"Mus1","Mus2","Mus3","Mus4","Mus5","Mus6"};
      char apellido[][50]= {"Amus1","Amus2","Amus3","Amus4","Amus5","Amus6"};
     int edad[]= {30,20,25,27,22,35};
     int idOrquesta[]= {1,2,4,4,1,3};
-    int idInstrumento[]= {2,5,2,1,3,4};
+    int idInstrumento[]= {2,4,2,1,3,4};
     for(i=0; i<cantidad; i++)
     {
 
@@ -264,16 +266,33 @@ int musico_modificar(eMusico* musicos,eInstrumento* instrumentos,eOrquesta* orqu
  * \param int cantidad de array
  * \return void
  */
-void musico_listar(eMusico* musicos,int cantidad)
+void musico_listar(eMusico* musicos, eInstrumento* instrumento,int cantidad, int cantInstrumento)
 {
     int i;
-
-    printf("ID MUSICO\tEDAD\tNOMBRE\tAPELLIDO\tID INSTRUMENTO\t ID ORQUESTA\n\n");
+    int indiceInstrumento;
+    printf("ID MUSICO\tEDAD\tNOMBRE\tAPELLIDO\tID INSTRUMENTO\t ID ORQUESTA\t NOMBRE INSTRUMENTO\t TIPO INSTRUMENTO \n\n");
     for(i=0;i<cantidad;i++)
     {
+
         if(musicos[i].isEmpty== ESTADO_OCUPADO)
-        {
-            printf("%d\t%d\t%s\t%s\t%d\t%d\n",musicos[i].idMusico,musicos[i].edad,musicos[i].nombre,musicos[i].apellido, musicos[i].idInstrumento, musicos[i].idOrquesta);
+        {   indiceInstrumento=instrumento_findById(instrumento,cantInstrumento,musicos[i].idInstrumento);
+            printf("%d\t%d\t%s\t%s\t%d\t%d\t%s\n",musicos[i].idMusico,musicos[i].edad,musicos[i].nombre,musicos[i].apellido, musicos[i].idInstrumento, musicos[i].idOrquesta, instrumento[indiceInstrumento].nombre);
+
+        switch(instrumento[indiceInstrumento].tipo)
+            {
+            case 1:
+                printf("\tCuerdas\n");
+                break;
+            case 2:
+                printf("\tViento-Madera\n");
+                break;
+            case 3:
+                printf("\tViento-Metal\n");
+                break;
+            case 4:
+                printf("\tPercusion\n");
+                break;
+            }
         }
     }
 }
@@ -305,7 +324,7 @@ void musico_admin(eMusico* musicos,eInstrumento* instrumentos,eOrquesta* orquest
         case 2://MODIFICAR LIBRO
             system("cls");
             printf("ID MUSICO\tNOMBRE\tAPELLIDO\tID INSTRUMENTO\t ID ORQUESTA\n");
-            musico_listar(musicos,cantidadMusicos);
+            musico_listar(musicos, instrumentos, cantidadMusicos, cantidadInstrumentos);
             idAux=getValidIntOpcion("\nINGRESE ID DE MUSICO A MODIFICAR\n","\tERROR\nOPCION NO VALIDA\n",1,cantidadMusicos);
             if(musico_modificar(musicos,instrumentos,orquestas,cantidadMusicos,cantidadInstrumentos,cantidadOrquestas,idAux)==0){
                 getChar("ID MODIFICADO CORRECTAMENTE\n");}
@@ -318,7 +337,7 @@ void musico_admin(eMusico* musicos,eInstrumento* instrumentos,eOrquesta* orquest
         case 3://BAJA EMPLEADO
             system("cls");
             printf("ID MUSICO\tNOMBRE\tAPELLIDO\tID INSTRUMENTO\t ID ORQUESTA\n");
-            musico_listar(musicos,cantidadMusicos);
+            musico_listar(musicos,instrumentos,cantidadMusicos,cantidadInstrumentos);
             idAux=getValidIntOpcion("\nINGRESE ID DE MUSICO A DAR DE BAJA\n","\tERROR\nOPCION NO VALIDA\n",1,cantidadMusicos);
             if(musico_remove(musicos,cantidadMusicos,idAux)==0){
                 getChar("ID DADO DE BAJA\n");}
@@ -330,7 +349,7 @@ void musico_admin(eMusico* musicos,eInstrumento* instrumentos,eOrquesta* orquest
 
         case 4://IMPRIMIR LISTA EMPLEADO
             system("cls");
-            musico_listar(musicos,cantidadMusicos);
+            musico_listar(musicos,instrumentos,cantidadMusicos,cantidadInstrumentos);
             getChar("");
             break;
         }
@@ -340,93 +359,10 @@ void musico_admin(eMusico* musicos,eInstrumento* instrumentos,eOrquesta* orquest
 
 //--------------------------------------------------------------------------
 
-void musico_listar_Edad(eMusico* musicos,int cantidad) //BIEN
-{
-    int i;
-
-    printf("ID MUSICO\tEDAD\tNOMBRE\tAPELLIDO\tID INSTRUMENTO\t ID ORQUESTA\n\n");
-    for(i=0;i<cantidad;i++)
-    {
-        if(musicos[i].isEmpty== ESTADO_OCUPADO)
-        {
-            if (musicos[i].edad>30)
-            {
-                 printf("%d\t%d\t%s\t%s\t%d\t%d\n",musicos[i].idMusico,musicos[i].edad,musicos[i].nombre,musicos[i].apellido, musicos[i].idInstrumento, musicos[i].idOrquesta);
-            }
-
-        }
-    }
-}
 
 
-//-----------------------------------------------------------------------------------
-void musico_listar_Orquesta(eMusico* musicos,int cantidad,  int idOrquesta) //BIEN
-{
-    int i;
 
-    printf("ID MUSICO\tEDAD\tNOMBRE\tAPELLIDO\tTIPO INSTRUMENTO\n\n");
-    for(i=0;i<cantidad;i++)
-    {
-        if(musicos[i].isEmpty== ESTADO_OCUPADO)
-        {
-             if(musicos[i].idOrquesta==idOrquesta)
-            {
-                 printf("%d\t%d\t%s\t%s",musicos[i].idMusico,musicos[i].edad,musicos[i].nombre,musicos[i].apellido);
-            switch(musicos[i].idInstrumento)
-            {
-            case 1:
-                printf("\tCuerdas\n");
-                break;
-            case 2:
-                printf("\tViento-Madera\n");
-                break;
-            case 3:
-                printf("\tViento-Metal\n");
-                break;
-            case 4:
-                printf("\tPercusion\n");
-                break;
-            }
-
-            }
-
-        }
-    }
-}
 //---------------------------------------------------------
-void musico_listar_Instrumento(eMusico* musicos,int cantidad) //BIEN
-{
-    int i;
-    musicos_ordenar_Apellido(musicos, cantidad);
-    printf("EDAD\tNOMBRE\tAPELLIDO\tTIPO INSTRUMENTO\n\n");
-    for(i=0;i<cantidad;i++)
-    {
-        if(musicos[i].isEmpty== ESTADO_OCUPADO)
-        {
-            if (musicos[i].idInstrumento==1)
-            {
-                 printf("%d\t%s\t%s",musicos[i].edad,musicos[i].nombre,musicos[i].apellido);
-            switch(musicos[i].idInstrumento)
-            {
-            case 1:
-                printf("\tCuerdas\n");
-                break;
-            case 2:
-                printf("\tViento-Madera\n");
-                break;
-            case 3:
-                printf("\tViento-Metal\n");
-                break;
-            case 4:
-                printf("\tPercusion\n");
-                break;
-            }
-
-            }
-
-        }
-    }
-}
 
 void musicos_ordenar_Apellido(eMusico* musicos,int cantidad)
 {

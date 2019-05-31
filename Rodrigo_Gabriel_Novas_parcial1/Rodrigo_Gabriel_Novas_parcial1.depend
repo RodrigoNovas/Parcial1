@@ -1,18 +1,24 @@
 # depslib dependency file v1.0
-1558567425 source:c:\users\rnovas002\3d objects\rodrigo_gabriel_novas_parcial1\main.c
+1559248613 source:c:\users\rnovas002\3d objects\rodrigo_gabriel_novas_parcial1\main.c
 	<stdio.h>
 	<stdlib.h>
+	"musico.h"
 	"instrumento.h"
 	"orquesta.h"
+	"INFORMES.h"
 
 1558567430 c:\users\rnovas002\3d objects\rodrigo_gabriel_novas_parcial1\instrumento.h
 
-1558567510 c:\users\rnovas002\3d objects\rodrigo_gabriel_novas_parcial1\orquesta.h
+1559164912 c:\users\rnovas002\3d objects\rodrigo_gabriel_novas_parcial1\orquesta.h
 	"musico.h"
+	"instrumento.h"
 
-1558567611 c:\users\rnovas002\3d objects\rodrigo_gabriel_novas_parcial1\musico.h
+1559248889 c:\users\rnovas002\3d objects\rodrigo_gabriel_novas_parcial1\musico.h
+	"instrumento.h"
+	"funcionesGet.h"
+	"INFORMES.h"
 
-1558567821 source:c:\users\rnovas002\3d objects\rodrigo_gabriel_novas_parcial1\funcionesget.c
+1558899739 source:c:\users\rnovas002\3d objects\rodrigo_gabriel_novas_parcial1\funcionesget.c
 	<stdio.h>
 	<stdlib.h>
 	<strings.h>
@@ -21,7 +27,7 @@
 
 1558567821 c:\users\rnovas002\3d objects\rodrigo_gabriel_novas_parcial1\funcionesget.h
 
-1558567428 source:c:\users\rnovas002\3d objects\rodrigo_gabriel_novas_parcial1\instrumento.c
+1559145643 source:c:\users\rnovas002\3d objects\rodrigo_gabriel_novas_parcial1\instrumento.c
 	<stdio.h>
 	<stdlib.h>
 	<strings.h>
@@ -30,7 +36,7 @@
 	"funcionesGet.h"
 	"musico.h"
 
-1558567480 source:c:\users\rnovas002\3d objects\rodrigo_gabriel_novas_parcial1\orquesta.c
+1559240066 source:c:\users\rnovas002\3d objects\rodrigo_gabriel_novas_parcial1\orquesta.c
 	<stdio.h>
 	<stdlib.h>
 	<strings.h>
@@ -38,12 +44,32 @@
 	"funcionesGet.h"
 	"orquesta.h"
 	"musico.h"
+	"instrumento.h"
+	"INFORMES.h"
 
-1558568482 source:c:\users\rnovas002\3d objects\rodrigo_gabriel_novas_parcial1\musico.c
+1559240150 source:c:\users\rnovas002\3d objects\rodrigo_gabriel_novas_parcial1\musico.c
 	<stdio.h>
 	<stdlib.h>
 	<strings.h>
 	<time.h>
+	"musico.h"
+	"orquesta.h"
+	"instrumento.h"
+	"funcionesGet.h"
+	"INFORMES.h"
+
+1559248569 c:\users\rnovas002\3d objects\rodrigo_gabriel_novas_parcial1\informes.h
+	"musico.h"
+	"instrumento.h"
+	"funcionesGet.h"
+	"orquesta.h"
+
+1559252481 source:c:\users\rnovas002\3d objects\rodrigo_gabriel_novas_parcial1\informes.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	<time.h>
+	"INFORMES.h"
 	"musico.h"
 	"orquesta.h"
 	"instrumento.h"

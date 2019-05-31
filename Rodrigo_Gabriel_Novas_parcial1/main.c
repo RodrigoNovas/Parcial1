@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "musico.h"
 #include "instrumento.h"
 #include "orquesta.h"
+#include "INFORMES.h"
 #define CANTIDAD_INSTRUMENTOS 20
 #define CANTIDAD_ORQUESTAS 50
 #define CANTIDAD_MUSICOS 1000
@@ -46,29 +48,7 @@ int main()
             system("cls");
             break;
         case 4:
-            do
-            {
-            printf("----------MENU INFORMES-----------\n");
-            opcionSub= getValidIntOpcion("\n1-INFORMAR MUSICOS MAS DE 30 AÑOS\n2-INFORMAR MUSICOS QUE TOCAN CUERDAS\n3-LISTAR TODOS LOS MUSICOS DE UNA ORQUESTA DETERMINADA\n4-SALIR\n","ERROR\nOPCION NO VALIDA",1,4);
-            switch(opcionSub)
-            {
-            case 1:
-            musico_listar_Edad(arrayMusico, CANTIDAD_MUSICOS);
-             getChar("");
-            break;
-            case 2:
-            musico_listar_Instrumento(arrayMusico, CANTIDAD_MUSICOS);
-            getChar("");
-            break;
-            case 3:
-            orquesta_listar(arrayOrquesta, CANTIDAD_ORQUESTAS);
-            printf("\n");
-            idAuxOrquesta= getValidIntOpcion("\n Ingrese ID de orquesta", "\n Error. Caracter no valido", 1, CANTIDAD_ORQUESTAS);
-            musico_listar_Orquesta(arrayMusico,CANTIDAD_MUSICOS, idAuxOrquesta);
-            getChar("");
-            break;
-            }
-            }while(opcionSub!=4);
+            informes_admin(arrayMusico, arrayInstrumentos,arrayOrquesta,CANTIDAD_MUSICOS,CANTIDAD_ORQUESTAS,CANTIDAD_INSTRUMENTOS);
             break;
         }
         }while(opcion!=5);

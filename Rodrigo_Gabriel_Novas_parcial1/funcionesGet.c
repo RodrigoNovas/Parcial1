@@ -369,3 +369,36 @@ void getValidString(char* mensaje,char* mensajeError,char* input)
         srand(time(NULL));
      return desde + (rand()%(hasta + 1 - desde));
  }
+
+
+ int utn_getString(  char *pResult,
+                    char *pMsg,
+                    char *pMsgError,
+                    int min,
+                    int max,
+                    int attemps)
+{
+    int ret=-1;
+    char bufferStr[4096];
+    while(attemps>0)
+    {
+        printf("%s",pMsg);
+        fgets(bufferStr,sizeof(bufferStr),stdin);
+        bufferStr[strlen(bufferStr)-1] = '\0';
+        if( pResult != NULL &&
+            strlen(bufferStr) >= min &&
+            strlen(bufferStr) <= max)
+        {
+            strncpy(pResult,bufferStr,max);
+            ret=0;
+            break;
+        }
+        else
+        {
+            printf("%s",pMsgError);
+        }
+        attemps--;
+    }
+
+    return ret;
+}

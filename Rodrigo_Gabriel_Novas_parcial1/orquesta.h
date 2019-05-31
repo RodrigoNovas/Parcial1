@@ -14,6 +14,7 @@ typedef struct
 #define ESTADO_OCUPADO 1
 #define ESTADO_LIBRE 0
 #include "musico.h"
+#include "instrumento.h"
 int orquesta_array_generarProximoId(void);
 int orquesta_init(eOrquesta* ,int );
 int orquesta_findIsEmpty(eOrquesta* ,int );
